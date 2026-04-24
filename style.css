@@ -105,18 +105,19 @@ a{
    HERO
 ========================= */
 
-.hero{
-    padding:290px 20px;
+.hero{ 
+    padding:270px 80px;
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     background-image:url("images/fond2.png");
     background-size:cover;
     background-position:center;
+
+    position:relative; /* AJOUT */
 }
 
 .hero-content{
-    max-width:1400px;
-    text-align:center;
+    max-width:1200px;
 }
 
 .hero h1{
@@ -125,7 +126,7 @@ a{
     font-size:52px;
     line-height:1.2;
     margin-bottom:20px;
-    color: white;
+    color:white;
     text-shadow:
         0px 3px 0px rgba(0,0,0,1),
         0px 6px 15px rgba(0,0,0,0.9),
@@ -135,11 +136,12 @@ a{
 .hero-sub{
     font-family: 'Montserrat', sans-serif;
     text-align:left;
-    max-width:1050px;
-    margin:0 auto 35px auto;
+    max-width:none;
+    margin:0 0 35px 0;
     line-height:1.6;
-    font-size:25px;
-    color: white;
+    font-size:22px;
+    color:white;
+    white-space:nowrap;
     text-shadow:
         0px 3px 0px rgba(0,0,0,1),
         0px 6px 15px rgba(0,0,0,0.9),
@@ -147,44 +149,57 @@ a{
 }
 
 .hero-buttons{
+    position:absolute;              /* MODIF */
+    bottom:60px;                   /* MODIF */
+    left:50%;                      /* MODIF */
+    transform:translateX(-50%);    /* MODIF */
+
     display:flex;
-    justify-content:center;
     gap:15px;
     flex-wrap:wrap;
-    transform:translateY(180px);  /* ← descend UNIQUEMENT les boutons */
 }
+/* ===== BOUTONS ===== */
 
-.btn-primary{
-    font-family: 'Montserrat', sans-serif;
-    padding:14px 22px;
-    background:#6d8a18;
-    border:1px solid rgb(255, 255, 255);
-    color:white;
-    border-radius:10px;
-    font-weight:500;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.4); /* ← AJOUT */
-}
-
-.btn-primary:hover{ background:#7c7c7c; }
-
+.btn-primary,
 .btn-secondary{
-    font-family: 'Montserrat', sans-serif;
-    padding:14px 22px;
-    border:1px solid rgb(255, 255, 255);
-    background:#6d8a18;
-    border-radius:10px;
-    color:rgb(255, 255, 255);
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.4); /* ← AJOUT */
+    font-family:'Montserrat', sans-serif;
+    padding:16px 28px;
+    border-radius:50px;
+    font-weight:500;
+    font-size:15px;
+
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+    transition:all 0.3s ease;
+    box-shadow:0 8px 25px rgba(0,0,0,0.35);
 }
 
-.btn-secondary:hover{ background:#7c7c7c; }
+/* PRIMARY */
+.btn-primary{
+    background:linear-gradient(135deg,#6ab04c,#8bc34a);
+    border:none;
+    color:white;
+}
 
-.btn-primary:hover,
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.5);
+    filter:brightness(1.1);
+}
+
+/* SECONDARY */
+.btn-secondary{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.3);
+    color:white;
+}
+
 .btn-secondary:hover{
-    transform: translateY(-3px);
-    box-shadow: 0px 12px 30px rgba(0,0,0,0.5);
+    background:rgba(255,255,255,0.15);
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.5);
 }
-
 
 /* =========================
    ABOUT
@@ -263,6 +278,244 @@ a{
     object-fit:cover;
 }
 
+.about-main-title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 27px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #1d2b2f;
+}
+
+/* mot en vert */
+.about-main-title span{
+    color: #6ab04c;
+}
+
+/* petit trait décoratif en dessous */
+.about-main-title::after{
+    content:"";
+    display:block;
+    width:60px;
+    height:4px;
+    background:#6ab04c;
+    margin-top:18px;
+    border-radius:10px;
+}
+
+.about-intro{
+    font-size:17px;
+    line-height:1.6;
+    color:#444;
+    margin-bottom:5px; /* ↓ réduit */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.about-feature:first-of-type{
+    margin-top:40px; /* ajuste : 30 / 40 / 50 selon ton goût */
+}
+.about-feature{
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+/* icône ronde */
+.feature-icon{
+    min-width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#deffea;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-top:5px; /* petit ajustement fin */
+}
+
+/* taille + style SVG */
+.feature-icon svg{
+    width:28px;
+    height:28px;
+    stroke:#228005; /* couleur de base */
+    transition:0.3s;
+}
+
+/* effet hover (optionnel mais stylé) */
+.about-feature:hover .feature-icon svg{
+    stroke:#ccb535;
+    transform:scale(1.1);
+}
+
+/* texte */
+.feature-text h3{
+    margin:0 0 8px 0;
+    font-size:17px;
+    font-family:'Montserrat', sans-serif;
+
+    text-transform:uppercase;   /* MAJUSCULE */
+    color:#6ab04c;              /* VERT */
+    font-weight:700;            /* un peu plus impactant */
+}
+
+.feature-text p{
+    margin:0;
+    font-size:17px;
+    line-height:1.6;
+    color:#444;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*SOUS TITRE J'ACCOMPAGNE*/
+
+.about-subtitle{
+    font-family:'Montserrat', sans-serif;
+    font-size:17px;
+    font-weight:700;
+    color:#6ab04c;
+
+    text-transform:uppercase;
+    letter-spacing:1px;
+
+    margin: 20px 0 8px 0;
+}
+/*CARDS JE TRAVAILLE AVEC*/
+
+.about-cards{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+    margin:35px 0;
+}
+
+/* carte */
+.about-card{
+    background:#f9f9f9;
+    border:1px solid #e5e5e5;
+    border-radius:14px;
+    padding:25px 15px;
+
+    text-align:center;
+
+    transition:0.25s ease;
+}
+
+/* hover subtil */
+.about-card:hover{
+    border-color:#6ab04c;
+    transform:translateY(-3px);
+}
+
+/* icône */
+.card-icon{
+    width:55px;
+    height:55px;
+    margin:0 auto 12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* SVG */
+.card-icon svg{
+    width:30px;
+    height:30px;
+    stroke:#6ab04c;
+}
+
+/* texte */
+.about-card p{
+    margin:0;
+    font-family:'Montserrat', sans-serif;
+    font-size:14px;
+    color:#333;
+    line-height:1.4;
+}
+
+.about-card strong{
+    display:block;
+    font-weight:600;
+    margin-bottom:2px;
+}
+
+/*BLOC DISCUTONS EN*/
+
+/* bloc global */
+.about-cta{
+    margin-top:40px;
+}
+
+/* alignement */
+.cta-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* texte */
+.cta-text{
+    margin:0;
+    font-size:17px;
+    font-weight:500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* lien stylé */
+.cta-link{
+    color:#6ab04c;
+    font-weight:600;
+    margin-left:5px;
+
+    text-decoration:none;
+    border-bottom:2px dashed #6ab04c;
+
+    transition:0.2s;
+}
+
+/* hover */
+.cta-link:hover{
+    opacity:0.7;
+    border-bottom:2px solid #6ab04c;
+}
+.cta-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* SVG propre */
+.cta-icon svg{
+    width:22px;
+    height:22px;
+    stroke:#6ab04c;
+    transition:0.3s;
+}
+
+/* petit effet hover global */
+.about-cta:hover .cta-icon svg{
+    transform:translateX(3px);
+}
+
+/*PHOTO*/
+
+.about-photo{
+    position:relative;
+    width:450px;
+    height:500px;
+    overflow: visible;
+}
+
+
+/* image */
+.about-photo img{
+    width:100%;
+    max-width:520px; /* ↑ augmente la taille (teste 500 → 550 si besoin) */
+    
+    transform:translateY(170px); /* ↓ descend la photo */
+}
 
 /* =========================
    SERVICES
@@ -304,12 +557,15 @@ a{
 
 .expertise-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns:repeat(4, minmax(280px, 1fr));
     gap:40px;
-    max-width:1200px;
-    margin:0 auto;
-}
 
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+
+    padding:0 80px; /* ← espace avec les bords */
+    box-sizing:border-box; /* IMPORTANT */
+}
 /* ===== CARTE ===== */
 
 .expertise-card{
@@ -352,6 +608,35 @@ a{
     transform:scaleX(1);
 }
 
+/* ===== ICON ===== */
+
+.expertise-card .icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#eef6f8;      /* fond léger */
+    border-radius:50%;
+}
+
+.expertise-card .icon svg{
+    width:32px;
+    height:32px;
+
+    stroke:#1e8a9e;          /* couleur icône */
+    fill:none;
+}
+
+/* hover */
+.expertise-card:hover .icon svg{
+    stroke:#6ab04c;              /* vert */
+    transform:rotate(12deg) scale(1.1); /* pivot + léger zoom */
+}
+
 /* ===== TITRE CARTE ===== */
 
 .expertise-card h3{
@@ -374,6 +659,7 @@ a{
     color:#555;
     font-size:15px;
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -391,59 +677,62 @@ a{
         padding:30px 20px;
     }
 }
+
 /* =========================
    PORTFOLIO
 ========================= */
 
+/* PORTFOLIO */
 .portfolio{
     padding:60px;
     background:#f2f2f2;
 }
 
+/* CONTAINER */
 .carousel{
     position:relative;
-    width:650px;
+    max-width:600px;
     margin:auto;
     overflow:hidden;
+    border-radius:20px;
 }
 
+/* TRACK */
 .carousel-track{
     display:flex;
-    align-items:center;
     transition:transform 0.4s ease;
+    align-items:center; /* ← centre les images verticalement */
 }
 
-.carousel-img{
+/* IMAGES */
+.slide{
     min-width:100%;
-    max-height:520px;
-    object-fit:contain;
-    display:block;
+    height:auto;              /* ← important */
+    object-fit:contain;       /* ← garde le ratio */
+    border-radius:20px;
 }
 
-.nav{
+/* FLÈCHES */
+.arrow{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:50px;
-    height:50px;
-    border-radius:16px;
-    border:1px solid rgba(0,0,0,0.06);
+    background:white;
+    border:none;
+    width:45px;
+    height:45px;
+    border-radius:50%;
     cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     font-size:22px;
-    color:#222;
-    background:#ffffff;
-    transition:0.25s;
-    z-index:999;
+    z-index:10;
 }
-
-.nav:hover{ transform:translateY(-50%) scale(1.1); }
 
 .prev{ left:10px; }
 .next{ right:10px; }
 
+.arrow:hover{
+    background:#ddd;
+}
 
 /* =========================
    CONTACT
