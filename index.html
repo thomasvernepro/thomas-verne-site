@@ -32,15 +32,21 @@
             </div>
         </a>
 
-        <ul>
+        <!-- MENU -->
+        <ul id="nav-links">
             <li><a href="#about" class="active">Qui je suis ?</a></li>
             <li><a href="#services">Mes prestations</a></li>
             <li><a href="#portfolio">Mes réalisations</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
 
+        <!-- BURGER -->
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
-
     <!-- ================= HERO ================= -->
 
     <section class="hero">
@@ -706,6 +712,24 @@
                 modal.style.display = "none";
             }
         };
+
+        /*Burger mobile*/
+
+        const burger = document.getElementById("burger");
+        const navMenu = document.getElementById("nav-links");
+
+        burger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+            burger.classList.toggle("active");
+        });
+        document.querySelectorAll("#nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                burger.classList.remove("active");
+            });
+        });
+
+
     </script>
 
 </body>

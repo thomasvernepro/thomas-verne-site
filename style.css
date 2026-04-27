@@ -35,7 +35,7 @@ a{
     z-index:1000;
     width:100%;
     box-sizing:border-box;
-    overflow:hidden;
+    overflow:visible;
 }
 
 /* ===== LOGO ===== */
@@ -1053,79 +1053,6 @@ a{
     scroll-margin-top:95px;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width:768px){
-
-.navbar{ padding:15px 20px; }
-.navbar ul{ display:none; }
-
-.logo h2{ font-size:26px; }
-.logo span{ font-size:14px; }
-
-.about{
-    flex-direction:column;
-    align-items:center;
-    gap:30px;
-    padding:40px 20px;
-}
-
-.about-text{ width:100%; font-size:16px; }
-.about-text h1{ font-size:28px; }
-
-.about-photo{
-    width:100%;
-    max-width:350px;
-    height:auto;
-}
-
-.services{ padding:40px 20px; }
-
-.services-split{
-    grid-template-columns:1fr;
-    gap:40px;
-}
-
-.expertise-grid{
-    grid-template-columns:1fr;
-    gap:25px;
-}
-
-.portfolio{ padding:40px 10px; }
-.carousel{ width:100%; }
-.carousel-img{ max-height:320px; }
-
-.nav{ width:40px; height:40px; font-size:18px; }
-
-.contact{ padding:40px 20px; }
-.contact-intro{ font-size:16px; text-align:center; }
-
-.footer-container{
-    flex-direction:column;
-    gap:20px;
-    text-align:center;
-}
-
-}
-.form-success{
-    display:none;
-    margin-top:18px;
-    padding:14px;
-    border-radius:10px;
-    background:#e8f7ec;
-    color:#1a7f3c;
-    font-weight:500;
-    animation:fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(6px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
 /* =========================
    MODAL FIX (IMPORTANT)
 ========================= */
@@ -1256,4 +1183,185 @@ textarea{
 @keyframes fadeIn{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
+}
+
+/* =========================
+   MOBILE OPTIMISATION
+========================= */
+
+@media (max-width:768px){
+
+/* NAVBAR */
+.navbar{
+    padding:10px 15px;
+}
+
+.logo h2{
+    font-size:20px;
+}
+
+.logo span{
+    font-size:12px;
+}
+
+.navbar ul{
+    display:none;
+}
+
+/* HERO */
+.hero{
+    padding:140px 20px;
+}
+
+.hero h1{
+    font-size:28px;
+    text-align:center;
+}
+
+.hero-sub{
+    font-size:16px;
+    text-align:center;
+    white-space:normal;
+}
+
+.hero-buttons{
+    position:static;
+    transform:none;
+    justify-content:center;
+    margin-top:30px;
+}
+
+/* ABOUT */
+.about-content{
+    flex-direction:column;
+    gap:40px;
+}
+
+.about-text{
+    width:100%;
+    font-size:16px;
+    text-align:left;
+}
+
+.about-photo{
+    width:100%;
+    height:auto;
+}
+
+.about-photo img{
+    transform:none;
+    max-width:100%;
+}
+
+.about-cards{
+    grid-template-columns:1fr 1fr;
+}
+
+/* SERVICES */
+.expertise-grid{
+    grid-template-columns:1fr;
+    padding:0 20px;
+}
+
+.tools-row{
+    gap:25px;
+}
+
+/* CONTACT */
+.contact-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+}
+
+.contact-sub{
+    font-size:18px;
+}
+
+.contact-cta{
+    padding:30px 20px;
+}
+
+/* MODAL */
+.modal-box{
+    width:95%;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+.form-row{
+    flex-direction:column;
+}
+
+}
+
+/* =========================
+   BURGER MENU MOBILE FIX
+========================= */
+
+.burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.burger span{
+    width:25px;
+    height:3px;
+    background:white;
+    border-radius:2px;
+    transition:0.3s;
+}
+
+.burger.active span:nth-child(1){
+    transform:rotate(45deg) translateY(8px);
+}
+
+.burger.active span:nth-child(2){
+    opacity:0;
+}
+
+.burger.active span:nth-child(3){
+    transform:rotate(-45deg) translateY(-8px);
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+    .burger{
+        display:flex;
+    }
+
+    .navbar ul{
+        display:none !important;
+    }
+
+    #nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#565047;
+
+        display:none;
+        flex-direction:column;
+        align-items:center;
+        padding:20px 0;
+
+        z-index:2000; /* 🔥 clé */
+        transform:translateY(-20px);
+        opacity:0;
+        transition:0.3s ease;
+}
+    
+
+    #nav-links.active{
+        display:flex !important;
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    #nav-links li{
+        margin:15px 0;
+    }
 }
