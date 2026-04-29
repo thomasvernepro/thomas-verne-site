@@ -45,11 +45,13 @@ a{
     gap:18px;
 }
 
-.logo img{
-    width:75px;
-    height:75px;
-    object-fit:contain;
-    display:block;
+.logo img {
+    height: 50px;
+    transition: transform 0.2s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
 }
 
 .logo-text{
