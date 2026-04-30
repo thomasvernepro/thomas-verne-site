@@ -35,6 +35,12 @@ a{
     width:100%;
     box-sizing:border-box;
     overflow:visible;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(86, 80, 71, 0.9);
+    backdrop-filter: blur(10px);
 }
 
 /* ===== LOGO ===== */
@@ -996,27 +1002,65 @@ a{
    FOOTER
 ========================= */
 
-.footer{
-    /*background:linear-gradient(90deg,#ffde59,#ff914d);*/
-    background:#565047;
-    padding:20px 60px;
+.footer {
+    background: #565047;
+    color: white;
+    padding: 25px 20px 10px; /* 👈 moins d’espace vertical */
+    .footer {
+    line-height: 1.4;
+}
 }
 
-.footer-container{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    flex-wrap:wrap;
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 40px;
 }
 
-.footer-info{
-    line-height:1.8;
-    font-size:15px;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+.footer-col {
+    min-width: 200px;
+}
+
+.footer h3,
+.footer h4 {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.footer p,
+.footer li {
+    margin-bottom: 4px; /* 👈 avant souvent 10+ */
+    line-height: 1.4;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 8px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.footer a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin-top: 15px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 13px;
 }
 
 .linkedin-link{
@@ -1032,7 +1076,6 @@ a{
 }
 
 .linkedin-link:hover{ opacity:0.7; }
-
 
 /* =========================
    OFFSET NAVBAR (FIX FINAL)
@@ -1397,4 +1440,14 @@ textarea{
         font-size:18px;
     }
 
+}
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
