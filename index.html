@@ -14,9 +14,11 @@
     <!-- Favicon -->
     <link rel="icon" href="images/faviconsvg.svg">
 
-    <!-- Police logo -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -52,6 +54,8 @@
     <section id="top" class="hero">
         <div class="hero-content">
 
+            <p class="hero-eyebrow">Cartographie · SIG · Analyse spatiale</p>
+
             <h1>
                 Des cartes pour comprendre, décider ou explorer.
             </h1>
@@ -72,7 +76,7 @@
 
     <section id="about" class="about">
 
-        <h1 class="section-title">Qui suis-je ?</h1>
+        <h1 class="section-title" data-eyebrow="Portrait">Qui suis-je ?</h1>
 
         <div class="about-content">
 
@@ -237,7 +241,7 @@
 
     <section id="services" class="services">
 
-        <h1 class="section-title">Mes prestations</h1>
+        <h1 class="section-title" data-eyebrow="Savoir-faire">Mes prestations</h1>
 
         <div class="services-split">
 
@@ -379,7 +383,7 @@
     <!-- ================= PORTFOLIO ================= -->
 
     <section id="portfolio" class="portfolio">
-        <h1 class="section-title">Mes réalisations</h1>
+        <h1 class="section-title" data-eyebrow="Portfolio">Mes réalisations</h1>
 
         <div class="portfolio-layout">
 
@@ -423,6 +427,7 @@
                     <img src="images/carte14.png" class="slide" alt="Carte 14">
                     <img src="images/carte15.png" class="slide" alt="Carte 15">
                     <img src="images/carte16.png" class="slide" alt="Carte 16">
+                    <img src="images/carte17.png" class="slide" alt="Carte 17">
                 </div>
 
                 <button class="arrow next">&#10095;</button>
@@ -439,11 +444,13 @@
         <div class="modal-caption" id="modal-caption"></div>
     </div>
 
+
+
     <!-- ================= CONTACT ================= -->
 
     <section id="contact" class="contact">
 
-        <h1 class="section-title">Contact</h1>
+        <h1 class="section-title" data-eyebrow="Échanger">Contact</h1>
 
         <p class="contact-sub">
             Une idée, un projet ? Je suis à votre écoute.
@@ -526,6 +533,53 @@
                 Me contacter
             </a>
 
+        </div>
+
+    </section>
+
+    <!-- ================= LINKEDIN ================= -->
+
+    <section class="linkedin-feed">
+
+        <h1 class="section-title" data-eyebrow="Actualités">Actualités LinkedIn</h1>
+
+        <div class="sk-ww-linkedin-profile-post" data-embed-id="25689531"></div>
+        <script src="https://widgets.sociablekit.com/linkedin-profile-posts/widget.js" defer></script>
+
+        <a href="https://www.linkedin.com/in/thomas-verne-03a4521a6/" target="_blank" class="linkedin-follow">
+
+            <span class="linkedin-icon">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </span>
+
+            <span class="linkedin-text">
+                Suivez-moi sur LinkedIn
+            </span>
+
+        </a>
+
+    </section>
+
+    <!-- ================= REFERENCES ================= -->
+
+    <section class="clients-strip">
+
+        <h3>Ils me font confiance</h3>
+
+        <div class="client-fade">
+
+            <a href="https://www.parc-montagnedereims.fr/" target="_blank" class="client-logo active">
+                <img src="images/logo-pnrmr.svg" alt="">
+            </a>
+<!--
+            <a href="https://domeliaconseil.fr/" target="_blank" class="client-logo">
+                <img src="images/logo-domelia.png" alt="">
+            </a>
+
+            <a href="https://www.vienne-condrieu-agglomeration.fr/" target="_blank" class="client-logo">
+                <img src="images/logo-vca.png" alt="">
+            </a>
+        -->
         </div>
 
     </section>
@@ -862,6 +916,14 @@
                 data: "Données environnementales",
                 objectif: "Évaluer les enjeux sanitaires liés à la qualité de l’air",
                 link: "#"
+            },
+            {
+                title: "Le recul des glaciers dans la région de Zermatt",
+                desc: "Analyse de l'évolution des glaciers de Zermatt entre 1850 et 2018 à partir des données GLAMOS",
+                client: "Projet personnel",
+                data: "GLAMOS",
+                objectif: "Comparer les emprises glaciaires historiques et récentes afin de visualiser l'impact du changement climatique sur les glaciers alpins à l'aide d'outils SIG et de cartographie.",
+                link: "#"
             }
         ];
 
@@ -968,6 +1030,24 @@
                 nav.classList.remove("scrolled");
             }
         });
+
+        /* ===== LOGOS CLIENTS ===== */
+
+        const logos = document.querySelectorAll(".client-logo");
+
+        let current = 0;
+
+        setInterval(() => {
+
+            logos[current].classList.remove("active");
+
+            current = (current + 1) % logos.length;
+
+            logos[current].classList.add("active");
+
+        }, 3000);
+
+        /* ===== LOGOS LINKEDIN ===== */
 
     </script>
 
