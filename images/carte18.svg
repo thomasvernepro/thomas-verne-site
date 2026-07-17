@@ -1,0 +1,70 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="contours" width="170" height="170" patternUnits="userSpaceOnUse">
+      <circle cx="85" cy="85" r="55" fill="none" stroke="#A3763F" stroke-opacity="0.09" stroke-width="1"/>
+      <circle cx="85" cy="85" r="80" fill="none" stroke="#A3763F" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="#A3763F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- fond papier -->
+  <rect x="0" y="0" width="1200" height="800" fill="#F6F1E6"/>
+  <rect x="0" y="0" width="1200" height="800" fill="url(#contours)"/>
+  <rect x="18" y="18" width="1164" height="764" fill="none" stroke="#212922" stroke-opacity="0.12" stroke-width="1.5" rx="6"/>
+
+  <!-- en-tete -->
+  <text x="60" y="98" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="15" letter-spacing="3" fill="#A3763F">◎ SIG &#8226; GEOTREK &#8226; ITINERANCE DOUCE</text>
+  <text x="60" y="150" font-family="Fraunces, Georgia, serif" font-size="40" font-weight="600" fill="#16232A">Préparation de tronçons SIG</text>
+  <text x="60" y="184" font-family="Inter, 'Segoe UI', sans-serif" font-size="18" fill="#4B5245">25 itinéraires de randonnée &#8212; du tracé GPX au shapefile prêt pour import</text>
+
+  <line x1="60" y1="206" x2="700" y2="206" stroke="#C79B5D" stroke-width="1.5" stroke-dasharray="1 6" stroke-linecap="round"/>
+
+  <!-- ligne de sentier reliant les etapes -->
+  <line x1="120" y1="270" x2="120" y2="686" stroke="#8CBB78" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
+
+  <!-- etape 1 -->
+  <circle cx="120" cy="270" r="24" fill="#3E6B44"/>
+  <text x="120" y="277" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="17" fill="#F6F1E6">1</text>
+  <rect x="180" y="230" width="820" height="80" rx="16" fill="#FFFFFF" stroke="#212922" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="212" y="264" font-family="Fraunces, Georgia, serif" font-size="21" font-weight="600" fill="#212922">Tracés GPX bruts</text>
+  <text x="212" y="290" font-family="Inter, sans-serif" font-size="14.5" fill="#4B5245">Sentiers PR, escapades du Parc, boucles &#8212; fournis par le PNRMR</text>
+
+  <!-- etape 2 -->
+  <circle cx="120" cy="374" r="24" fill="#3E6B44"/>
+  <text x="120" y="381" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="17" fill="#F6F1E6">2</text>
+  <rect x="180" y="334" width="820" height="80" rx="16" fill="#FFFFFF" stroke="#212922" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="212" y="368" font-family="Fraunces, Georgia, serif" font-size="21" font-weight="600" fill="#212922">Sélection des tronçons BD Topo</text>
+  <text x="212" y="394" font-family="Inter, sans-serif" font-size="14.5" fill="#4B5245">Repérage des tronçons de route correspondant aux tracés</text>
+
+  <!-- etape 3 -->
+  <circle cx="120" cy="478" r="24" fill="#3E6B44"/>
+  <text x="120" y="485" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="17" fill="#F6F1E6">3</text>
+  <rect x="180" y="438" width="820" height="80" rx="16" fill="#FFFFFF" stroke="#212922" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="212" y="472" font-family="Fraunces, Georgia, serif" font-size="21" font-weight="600" fill="#212922">Couche d'import calée (EPSG 2154)</text>
+  <text x="212" y="498" font-family="Inter, sans-serif" font-size="14.5" fill="#4B5245">Fusion des tronçons entre nœuds, champs Geotrek renseignés</text>
+
+  <!-- etape 4 -->
+  <circle cx="120" cy="582" r="24" fill="#3E6B44"/>
+  <text x="120" y="589" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="17" fill="#F6F1E6">4</text>
+  <rect x="180" y="542" width="820" height="80" rx="16" fill="#FFFFFF" stroke="#212922" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="212" y="576" font-family="Fraunces, Georgia, serif" font-size="21" font-weight="600" fill="#212922">Contrôle topologique</text>
+  <text x="212" y="602" font-family="Inter, sans-serif" font-size="14.5" fill="#4B5245">Vérification et correction des erreurs de géométrie</text>
+
+  <!-- etape 5 (accent navy = livrable final) -->
+  <circle cx="120" cy="686" r="24" fill="#16232A"/>
+  <text x="120" y="693" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="17" fill="#F6F1E6">5</text>
+  <rect x="180" y="646" width="820" height="80" rx="16" fill="#16232A"/>
+  <text x="212" y="680" font-family="Fraunces, Georgia, serif" font-size="21" font-weight="600" fill="#FFFFFF">Shapefile finalisé</text>
+  <text x="212" y="706" font-family="Inter, sans-serif" font-size="14.5" fill="#8CBB78">Prêt pour import dans la base Geotrek</text>
+
+  <!-- petite rose des vents en signature -->
+  <g transform="translate(1108,90)" opacity="0.75">
+    <circle cx="0" cy="0" r="26" fill="none" stroke="#16232A" stroke-width="1"/>
+    <path d="M0,-26 L6,0 L0,26 L-6,0 Z" fill="#16232A"/>
+    <text x="0" y="-32" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="12" fill="#16232A">N</text>
+  </g>
+
+  <text x="1140" y="770" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="13" letter-spacing="1" fill="#7A8171">PNR MONTAGNE DE REIMS &#8226; 2026</text>
+</svg>
