@@ -213,19 +213,61 @@ h1, h2{
     background-position:center;
     position:relative;
     overflow:hidden;
+    cursor:crosshair;
 }
 
-.hero::before{
-    /* liseré de courbes de niveau, coin haut-droit — signature carto */
-    content:"";
+.hero-graticule{
     position:absolute;
-    top:-120px; right:-120px;
-    width:520px; height:520px;
-    background-image: repeating-radial-gradient(circle,
-        transparent 0, transparent 22px,
-        rgba(255,255,255,0.09) 23px, rgba(255,255,255,0.09) 24px,
-        transparent 25px, transparent 46px);
+    inset:-2px;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size:56px 56px;
+    animation: heroDrift 55s linear infinite;
     pointer-events:none;
+    z-index:0;
+}
+
+@keyframes heroDrift{
+    from{ background-position:0 0, 0 0; }
+    to{ background-position:56px 56px, 56px 56px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .hero-graticule{ animation:none; }
+}
+
+/* réticule de coordonnées qui suit le curseur — signature carto */
+.hero-crosshair{
+    position:fixed;
+    z-index:20;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    opacity:0;
+    transition:opacity .2s ease;
+}
+.hero-crosshair.show{ opacity:1; }
+.hero-crosshair svg{ width:34px; height:34px; overflow:visible; }
+.hero-crosshair line,
+.hero-crosshair circle{
+    stroke:var(--forest-light);
+    stroke-width:1;
+    fill:none;
+}
+.hero-coords{
+    position:absolute;
+    top:20px; left:20px;
+    white-space:nowrap;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.02em;
+    color:#ffffff;
+    background:rgba(15,22,20,0.78);
+    border:1px solid rgba(255,255,255,0.18);
+    padding:4px 9px;
+}
+@media (max-width:860px){
+    .hero-crosshair{ display:none; }
 }
 
 .hero-content{
@@ -1151,23 +1193,23 @@ h1, h2{
 
 .clients-strip{
     text-align:center;
-    padding:40px 0;
+    padding:80px 0;
     background-color: var(--paper);
 }
 
 .clients-strip h3{
-    font-size: 12.5px;
+    font-size: 15px;
     font-weight: 600;
     font-family: var(--font-mono);
     text-transform:uppercase;
-    letter-spacing:0.14em;
+    letter-spacing:0.16em;
     color: var(--contour);
-    margin-bottom: 24px;
+    margin-bottom: 36px;
 }
 
 .client-fade{
     position:relative;
-    height:90px;
+    height:140px;
 }
 
 .client-logo{
@@ -1187,7 +1229,7 @@ h1, h2{
 }
 
 .client-logo img{
-    height:64px;
+    height:100px;
     filter:grayscale(35%);
     transition:filter 0.3s ease;
 }
