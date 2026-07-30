@@ -1,68 +1,256 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maintenance – Thomas Verne</title>
+<title>Maintenance — Thomas Verne</title>
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --paper:       #F6F1E6;
+    --paper-dim:   #EEE6D3;
+    --paper-line:  rgba(32,38,28,0.10);
+    --ink:         #212922;
+    --ink-soft:    #4B5245;
+    --ink-faint:   #7A8171;
+
+    --forest:      #3E6B44;
+    --forest-deep: #24422A;
+    --forest-light:#8CBB78;
+    --navy:        #16232A;
+    --contour:     #A3763F;
+    --contour-soft:#C79B5D;
+
+    --shadow-md: 0 16px 40px rgba(22,35,42,0.14);
+    --shadow-lg: 0 28px 70px rgba(22,35,42,0.22);
+
+    --r-md: 18px;
+    --r-lg: 28px;
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+*{ box-sizing:border-box; }
+
 body{
     margin:0;
-    font-family:'Segoe UI', sans-serif;
-    background:linear-gradient(135deg,#ffde59,#ff914d);
-    height:100vh;
+    min-height:100vh;
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(140,187,120,0.16), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(46,140,158,0.10), transparent 45%),
+        var(--paper);
     display:flex;
     align-items:center;
     justify-content:center;
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+}
+
+/* liseré de courbes de niveau, en fond — signature du site */
+body::before{
+    content:"";
+    position:absolute;
+    top:-160px; right:-160px;
+    width:560px; height:560px;
+    background-image: repeating-radial-gradient(circle,
+        transparent 0, transparent 22px,
+        rgba(62,107,68,0.10) 23px, rgba(62,107,68,0.10) 24px,
+        transparent 25px, transparent 46px);
+    pointer-events:none;
+}
+body::after{
+    content:"";
+    position:absolute;
+    bottom:-180px; left:-180px;
+    width:520px; height:520px;
+    background-image: repeating-radial-gradient(circle,
+        transparent 0, transparent 22px,
+        rgba(163,118,63,0.10) 23px, rgba(163,118,63,0.10) 24px,
+        transparent 25px, transparent 46px);
+    pointer-events:none;
+}
+
+.card{
+    position:relative;
+    z-index:2;
+    background:var(--paper-dim);
+    border:1px solid var(--paper-line);
+    border-radius:var(--r-lg);
+    box-shadow:var(--shadow-lg);
+    padding:52px 46px 44px;
+    max-width:480px;
+    width:100%;
     text-align:center;
 }
 
-.box{
-    position:relative;
-    z-index:2;
-    background:white;
-    padding:50px 40px;
-    border-radius:18px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.15);
-    max-width:500px;
+.logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:30px;
 }
+.logo img{ height:34px; width:auto; }
 
-h1{ margin-bottom:10px; font-size:32px; }
-p{ color:#555; line-height:1.6; }
-
-.loader{
-    margin:30px auto 0;
-    width:40px;
-    height:40px;
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--forest);
+    background:rgba(62,107,68,0.08);
+    border:1px solid rgba(62,107,68,0.22);
+    border-radius:100px;
+    padding:6px 14px;
+    margin-bottom:22px;
+}
+.eyebrow::before{
+    content:"";
+    width:7px; height:7px;
     border-radius:50%;
-    border:4px solid #eee;
-    border-top:4px solid #ff914d;
-    animation:spin 1s linear infinite;
+    background:var(--forest);
+    animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:0.4; transform:scale(0.75); }
 }
 
-@keyframes spin{
-    to{ transform:rotate(360deg); }
+h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:30px;
+    line-height:1.2;
+    margin:0 0 14px;
+    color:var(--navy);
+}
+h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--forest);
+}
+
+p{
+    color:var(--ink-soft);
+    line-height:1.65;
+    font-size:15px;
+    margin:0 auto;
+    max-width:38ch;
+}
+
+/* boussole qui tourne, au lieu du spinner générique */
+.compass{
+    margin:32px auto 8px;
+    width:64px; height:64px;
+}
+.compass circle{ fill:none; stroke:var(--paper-line); stroke-width:1.4; }
+.compass .needle{
+    transform-origin:32px 32px;
+    animation:rotate 3.2s cubic-bezier(0.65,0,0.35,1) infinite;
+}
+@keyframes rotate{
+    0%{ transform:rotate(0deg); }
+    50%{ transform:rotate(200deg); }
+    100%{ transform:rotate(360deg); }
+}
+.compass .needle-n{ fill:var(--forest); }
+.compass .needle-s{ fill:var(--ink-faint); opacity:0.5; }
+@media (prefers-reduced-motion: reduce){
+    .compass .needle{ animation:none; }
+    .eyebrow::before{ animation:none; }
+}
+
+.divider{
+    width:36px; height:1px;
+    background:var(--paper-line);
+    margin:28px auto;
+}
+
+.contact{
+    font-size:13.5px;
+    color:var(--ink-faint);
+}
+.contact a{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--forest-deep);
+    text-decoration:none;
+    border-bottom:1px solid rgba(62,107,68,0.35);
+    transition:border-color .2s ease, color .2s ease;
+}
+.contact a:hover{
+    color:var(--forest);
+    border-color:var(--forest);
+}
+
+.scale{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-top:26px;
+    font-family:var(--font-mono);
+    font-size:9.5px;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+}
+.scale .bar{
+    width:70px; height:5px;
+    background:repeating-linear-gradient(90deg, var(--contour-soft) 0 9px, transparent 9px 18px);
+}
+
+@media (max-width:520px){
+    .card{ padding:42px 26px 36px; }
+    h1{ font-size:25px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-    <h1>Site en maintenance</h1>
+<div class="card">
 
-    <p>
-        Je mets actuellement à jour le site pour améliorer mes services.
-        Merci pour votre patience 🙂
+    <a href="#" class="logo">
+        <img src="images/logo3.png" alt="Thomas Verne — Cartographie & SIG">
+    </a>
+
+    <span class="eyebrow">Mise à jour en cours</span>
+
+    <h1>Le site est en <em>maintenance</em>.</h1>
+
+    <p>Merci pour votre patience.</p>
+
+    <svg class="compass" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="27"/>
+        <circle cx="32" cy="32" r="19"/>
+        <g class="needle">
+            <polygon class="needle-n" points="32,10 37,32 32,29 27,32"/>
+            <polygon class="needle-s" points="32,54 37,32 32,35 27,32"/>
+        </g>
+    </svg>
+
+    <div class="divider"></div>
+
+    <p class="contact">
+        Une question, un projet urgent ? Vous pouvez toujours m'écrire directement :<br>
+        <a href="mailto:thomas.verne.pro@gmail.com">thomas.verne.pro@gmail.com</a>
     </p>
 
-    <div class="loader"></div>
+    <div class="scale">
+        <span>0</span><div class="bar"></div><span>en cours de mise à jour</span>
+    </div>
 
-    <p style="margin-top:25px;font-size:14px;">
-        Vous pouvez toujours me contacter :<br>
-        <strong>thomas.verne.pro@gmail.com</strong>
-    </p>
 </div>
 
 </body>
