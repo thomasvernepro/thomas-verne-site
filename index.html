@@ -454,6 +454,11 @@
 
             <!-- BLOC TEXTE -->
             <div class="portfolio-info">
+                <div class="portfolio-counter">
+                    <span id="current-slide">01</span>
+                    <span class="separator">/</span>
+                    <span id="total-slides">18</span>
+                </div>
                 <span class="portfolio-tag" id="p-tag">Cartographie & analyse</span>
 
                 <h2 id="p-title">Titre</h2>
@@ -468,7 +473,7 @@
                     <p><strong>Objectif :</strong> <span id="p-objectif"></span></p>
                 </div>
 
-                <a href="#" class="portfolio-link" id="p-link">Voir le projet →</a>
+                <a href="#" class="portfolio-link" id="p-link">Agrandir la carte →</a>
             </div>
 
             <!-- CAROUSEL -->
@@ -476,6 +481,10 @@
                 <button class="arrow prev">&#10094;</button>
 
                 <div class="carousel-track">
+                    <img src="images/carte20.gif" class="slide" alt="Carte 20">
+                    <img src="images/carte19.png" class="slide" alt="Carte 19">
+                    <img src="images/carte18.svg" class="slide" alt="Préparation SIG - itinérance douce PNRMR">
+                    <img src="images/carte17.png" class="slide" alt="Carte 17">
                     <img src="images/carte1.png" class="slide" alt="Carte 1">
                     <img src="images/carte2.png" class="slide" alt="Carte 2">
                     <img src="images/carte3.png" class="slide" alt="Carte 3">
@@ -492,8 +501,7 @@
                     <img src="images/carte14.png" class="slide" alt="Carte 14">
                     <img src="images/carte15.png" class="slide" alt="Carte 15">
                     <img src="images/carte16.png" class="slide" alt="Carte 16">
-                    <img src="images/carte17.png" class="slide" alt="Carte 17">
-                    <img src="images/carte18.svg" class="slide" alt="Préparation SIG - itinérance douce PNRMR">
+
                 </div>
 
                 <button class="arrow next">&#10095;</button>
@@ -502,6 +510,7 @@
         </div>
     </section>
     <!-- 🔥 MODAL (A METTRE ICI) -->
+
     <div class="portfolio-modal" id="portfolio-modal">
         <span class="modal-close" id="modal-close">&times;</span>
 
@@ -848,6 +857,38 @@
 
         const projects = [
             {
+                title: "Évolution des points chauds de l'incendie des Landes",
+                desc: "Animation cartographique illustrant l'évolution quotidienne des points chauds détectés par satellite lors des incendies de juillet 2026.",
+                client: "Projet personnel",
+                data: "NASA FIRMS (VIIRS), IGN BD TOPO, Esri World Imagery",
+                objectif: "Mettre en évidence l'évolution spatio-temporelle des points chauds détectés par satellite afin d'illustrer la progression de l'incendie à travers une animation cartographique claire et informative.",
+                link: "#"
+            },
+            {
+                title: "Plan communal de Reventin-Vaugris",
+                desc: "Conception d'un plan communal moderne mettant en valeur les équipements, services et itinéraires de Reventin-Vaugris.",
+                client: "Projet personnel",
+                data: "Mairie de Reventin-Vaugris, BD Topo IGN, Google Maps",
+                objectif: "Concevoir un plan communal clair, moderne et fonctionnel destiné à valoriser le territoire et à faciliter l'orientation des habitants et des visiteurs.",
+                link: "#"
+            },
+            {
+                title: "Préparation SIG pour intégration Geotrek",
+                desc: "Préparation de 25 tronçons d'itinéraires de randonnée (PR, escapades du Parc, boucles) calés sur la BD Topo, en vue de leur intégration dans la plateforme Geotrek.",
+                client: "Parc naturel régional de la Montagne de Reims",
+                data: "Tracés GPX, BD Topo IGN",
+                objectif: "Fournir un shapefile unique, topologiquement propre et prêt à l'import Geotrek, dans le cadre du projet Interreg MONA",
+                link: "#"
+            },
+            {
+                title: "Le recul des glaciers dans la région de Zermatt",
+                desc: "Analyse de l'évolution des glaciers de Zermatt entre 1850 et 2018 à partir des données GLAMOS",
+                client: "Projet personnel",
+                data: "GLAMOS",
+                objectif: "Comparer les emprises glaciaires historiques et récentes afin de visualiser l'impact du changement climatique sur les glaciers alpins à l'aide d'outils SIG et de cartographie.",
+                link: "#"
+            },    
+            {
                 title: "Pollution lumineuse en Europe",
                 desc: "Analyse de l’intensité lumineuse nocturne à l’échelle européenne pour identifier les zones où l’obscurité persiste encore.",
                 client: "Projet personnel",
@@ -974,24 +1015,10 @@
                 data: "Données environnementales",
                 objectif: "Évaluer les enjeux sanitaires liés à la qualité de l’air",
                 link: "#"
-            },
-            {
-                title: "Le recul des glaciers dans la région de Zermatt",
-                desc: "Analyse de l'évolution des glaciers de Zermatt entre 1850 et 2018 à partir des données GLAMOS",
-                client: "Projet personnel",
-                data: "GLAMOS",
-                objectif: "Comparer les emprises glaciaires historiques et récentes afin de visualiser l'impact du changement climatique sur les glaciers alpins à l'aide d'outils SIG et de cartographie.",
-                link: "#"
-            },
-            {
-                title: "Préparation SIG pour intégration Geotrek",
-                desc: "Préparation de 25 tronçons d'itinéraires de randonnée (PR, escapades du Parc, boucles) calés sur la BD Topo, en vue de leur intégration dans la plateforme Geotrek.",
-                client: "Parc naturel régional de la Montagne de Reims",
-                data: "Tracés GPX, BD Topo IGN",
-                objectif: "Fournir un shapefile unique, topologiquement propre et prêt à l'import Geotrek, dans le cadre du projet Interreg MONA",
-                link: "#"
-            },
+            },                  
+            
         ];
+
 
         /* ELEMENTS */
         const pTitle = document.getElementById("p-title");
@@ -1011,6 +1038,13 @@
             pData.innerHTML = p.data;
             pObjectif.innerHTML = p.objectif;
             pLink.href = p.link;
+
+            // Compteur
+            document.getElementById("current-slide").textContent =
+                String(index + 1).padStart(2, "0");
+
+            document.getElementById("total-slides").textContent =
+                String(slides.length).padStart(2, "0");
         }
 
 
